@@ -21,7 +21,6 @@ export const LinkProvider = ({children}) => {
         console.log("link", link)
         try {
             const res = await createLinkRequest(link)
-
         } catch (error) {
             console.log(error)
         }
@@ -31,13 +30,23 @@ export const LinkProvider = ({children}) => {
         const res = await getLinksRequest();
         setLink(res.data);
       };
+    
+    const deleteLink = async(id) => {
+        const res = await deleteLinkRequest(id)
+    }
+
+    const updateLink = async(id,link) => {
+        const res = await updateLinkRequest(id,link)
+    }
 
     return (
         <LinkContext.Provider
             value={{
                 link,
                 createLink,
-                getLinks
+                getLinks,
+                deleteLink,
+                updateLink
             }}
         >
             {children}

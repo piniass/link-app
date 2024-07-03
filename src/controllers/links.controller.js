@@ -35,10 +35,16 @@ export const deleteLink = async(req, res) => {
     res.json(link)
 }
 
-export const updateLink = async(req, res) => {
-    const link = await Link.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-    })
-    if(!link) return res.status(404).json({ message: "Link no encontrado" });
-    res.json(link)
-}
+export const updateLink = async (req, res) => {
+    try {
+      const { pagina, enlace } = req.body;
+      const linkUpdated = await Link.findOneAndUpdate(
+        { _id: req.params.id },
+        { pagina, enlace },
+        { new: true }
+      );
+      return res.json(linkUpdated);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  };

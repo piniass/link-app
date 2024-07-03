@@ -54,7 +54,7 @@ export default function RegisterPage() {
         />
         
         <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
-          Iniciar sesion
+          Crear Usuario
         </button>
         <button
           type="button"

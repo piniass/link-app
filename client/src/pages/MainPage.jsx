@@ -20,7 +20,7 @@ export default function MainPage() {
 
   const renderComponents = () => (
     location.pathname === '/links'
-      ? <LinksComponent getLinks={getLinks}/>
+      ? <LinksComponent getLinks={getLinks} link={link}/>
       : <ProfileComponent/>
   )
 

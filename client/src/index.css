@@ -16,3 +16,21 @@ body {
   min-width: 100vw;
   padding: 0;
 }
+
+/* Estilo para la barra de desplazamiento completa */
+::-webkit-scrollbar {
+  width: 3px; /* Ancho de la barra vertical */
+  height: 8px; /* Altura de la barra horizontal */
+}
+
+/* Estilo para el "thumb" (el área que se arrastra) */
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5; /* Color del thumb */
+  /* border-radius: 10px; Bordes redondeados */
+}
+
+/* Estilo para el "track" (el área en la que se desplaza el thumb) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color del track */
+  /* border-radius: 10px; Bordes redondeados */
+}
