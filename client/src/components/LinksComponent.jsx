@@ -17,7 +17,7 @@ export default function LinksComponent(props) {
         };
       });
       setCards(newCards); // Establecer el nuevo estado de 'cards'
-      console.log("cartas: ", newCards);
+      // console.log("cartas: ", newCards);
     }
   }, [link]);
 

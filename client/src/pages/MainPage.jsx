@@ -9,7 +9,6 @@ import { useLinks } from '../context/LinkContext'
 
 export default function MainPage() {
   const location = useLocation()
-  const { user } = useAuth()
   const { link, getLinks } = useLinks()
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function MainPage() {
   return (
     <main className="w-screen h-screen grid grid-cols-3 grid-rows-9 gap-4 bg-slate-100 p-4">
       <Header />
-      <Details user={user} link={link}/>
+      <Details  link={link}/>
       {renderComponents()}
     </main>
   )

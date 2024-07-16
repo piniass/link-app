@@ -17,7 +17,7 @@ export const LINKS_RSS = [
     },
     {
       imagen: 
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="url(#a)" height="30" width="30"><defs><linearGradient x1="50%" x2="50%" y1="97.078%" y2="0%" id="a"><stop offset="0%" stop-color="#0062E0"/><stop offset="100%" stop-color="#19AFFF"/></linearGradient></defs><path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"/><path fill="#FFF" d="m25 23 .8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="url(#a)" height="30" width="30"><defs><linearGradient x1="50%" x2="50%" y1="97.078%" y2="0%" id="a"><stop offset="0%" stopColor="#0062E0"/><stop offset="100%" stopColor="#19AFFF"/></linearGradient></defs><path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"/><path fill="#FFF" d="m25 23 .8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"/>
       </svg>,
       nombre: "Facebook"
     },
@@ -62,17 +62,17 @@ export const LINKS_RSS = [
         imagen:
         <svg fill="#000000" width="30px" height="30px" viewBox="-0.52 0 15.07 15.07" xmlns="http://www.w3.org/2000/svg">
 
-<g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_2" data-name="Layer 2">
 
-<g id="Layer_1-2" data-name="Layer 1">
+        <g id="Layer_1-2" data-name="Layer 1">
 
-<path d="M3,15.07A4,4,0,0,1,.15,13.89a.5.5,0,0,1,0-.71.5.5,0,0,1,.7,0,3,3,0,0,0,4.3,0l7-7a3,3,0,0,0,0-4.29,3.11,3.11,0,0,0-4.3,0L2.1,7.64A1.27,1.27,0,1,0,3.9,9.43L9.65,3.68a.5.5,0,0,1,.7,0,.5.5,0,0,1,0,.71L4.6,10.14a2.31,2.31,0,0,1-3.2,0,2.26,2.26,0,0,1,0-3.21L7.15,1.18A4,4,0,0,1,14,4a4,4,0,0,1-1.19,2.85l-7,7A4,4,0,0,1,3,15.07Z"/>
+        <path d="M3,15.07A4,4,0,0,1,.15,13.89a.5.5,0,0,1,0-.71.5.5,0,0,1,.7,0,3,3,0,0,0,4.3,0l7-7a3,3,0,0,0,0-4.29,3.11,3.11,0,0,0-4.3,0L2.1,7.64A1.27,1.27,0,1,0,3.9,9.43L9.65,3.68a.5.5,0,0,1,.7,0,.5.5,0,0,1,0,.71L4.6,10.14a2.31,2.31,0,0,1-3.2,0,2.26,2.26,0,0,1,0-3.21L7.15,1.18A4,4,0,0,1,14,4a4,4,0,0,1-1.19,2.85l-7,7A4,4,0,0,1,3,15.07Z"/>
 
-</g>
+        </g>
 
-</g>
+        </g>
 
-</svg>
+        </svg>
         ,
         nombre: "Otro"
       }

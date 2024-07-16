@@ -1,7 +1,8 @@
 import { createContext, useState,useContext } from "react";
-import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
+import { registerRequest, loginRequest, verifyTokenRequest, editRequest, putImage, getInfo } from "../api/auth";
 import Cookies from 'js-cookie'
 import { useEffect } from "react";
+import { get } from "mongoose";
 
 export const AuthContext = createContext()
 
@@ -31,6 +32,7 @@ export const AuthProvider = ({children}) => {
     
           try {
             const res = await verifyTokenRequest(cookies.token);
+            console.log(res.data)
             if (!res.data) return setIsAuthenticated(false);
             setIsAuthenticated(true);
             setUser(res.data);
@@ -57,12 +59,44 @@ export const AuthProvider = ({children}) => {
     const signin = async(user) => {
         try {
             const res = await loginRequest(user)
-            setUser(user)
+            await setProfile()
+            // setUser(user)
             setIsAuthenticated(true)
         } catch (error) {
             console.log(error)
             // setError(error.response.data)
             // console.log(error.response.data)
+        }
+    }
+
+    const editProfile = async(user) => {
+        try {
+            console.log(user)
+            const res = await editRequest(user)
+            await setProfile()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const setProfile = async() => {
+        try {
+            const res = await getInfo()
+            console.log(res)
+            setUser(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const formImage = async(image) => {
+        try {
+            console.log("parametro: ",image)
+            const res = await putImage(image)
+            await setProfile()
+            console.log("respuesta: ",res)
+        } catch(error) {
+            console.log("error: ",error)
         }
     }
 
@@ -78,10 +112,13 @@ export const AuthProvider = ({children}) => {
                 signup,
                 signin,
                 user,
+                formImage,
+                setProfile,
+                editProfile,
                 isAuthenticated,
                 error,
                 loading,
-                logout
+                logout,
             }}>
             {children}
         </AuthContext.Provider>

@@ -1,4 +1,5 @@
 import Link from "../models/links.model.js";
+import User from "../models/user.models.js";
 
 export const getLinks = async (req,res) => {
     const links = await Link.find({
@@ -48,3 +49,21 @@ export const updateLink = async (req, res) => {
       return res.status(500).json({ message: error.message });
     }
   };
+
+  export const getLinkByName = async(req, res) => {
+    try {
+        const { username } = req.params;
+    
+    // Validar si el nombre de usuario se ha proporcionado
+    if (!username) {
+      return res.status(400).json({ message: "El nombre de usuario es requerido." });
+    }
+
+    // Buscar al usuario por nombre de usuario
+    const userFound = await User.findOne({ username: username });
+    const linkByName = await Link.find({ user: userFound._id })
+    res.json(linkByName)
+    } catch (error) {
+        
+    }
+  }

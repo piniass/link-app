@@ -8,13 +8,13 @@ const LinkDetail = ({ className, image, name, enlace }) => {
         : `https://${enlace}`;
 
     return (
-        <li className={className}>
+        <div className={className}>
             <div className='flex items-center gap-4'>
                 <figure>{image}</figure>
                 <p>{name}</p>
             </div>
             <a href={absoluteEnlace} target='_blank' rel='noopener noreferrer'><ArrowIcon /></a>
-        </li>
+        </div>
     );
 };
 

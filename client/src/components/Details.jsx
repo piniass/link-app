@@ -1,14 +1,14 @@
-import React from 'react'
-import { useAuth } from '../context/AuthContext'
-import LinkDetail from './LinkDetail'
-import { LINKS_RSS } from './SocialMediaLinks'
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import LinkDetail from './LinkDetail';
+import { LINKS_RSS } from './SocialMediaLinks';
+import foto from '../assets/default.webp'
 
 export default function Details(props) {
-    const link = props.link
-    const user = props.user
+    const { link } = props;
+    const { user } = useAuth();
 
-    console.log("redes: ", LINKS_RSS)
-    console.log("user: ", user)
+    console.log("usuario",user)
 
     const selectColor = (link) => {
         let className = 'p-2 w-full rounded-md flex items-center justify-between ';
@@ -53,30 +53,32 @@ export default function Details(props) {
     return (
         <section className='bg-white col-span-1 row-span-8 flex flex-col items-center justify-start gap-2'>
             <article className='flex flex-col items-center justify-center gap-4 mt-4'>
-                <div className='size-52 bg-green-500 rounded-full'></div>
+               
+                    <div className='size-52 bg-gray-200 rounded-full'>
+                        {user ? <img src={user.image.url} alt="" className='rounded-full'/> :  <img src={foto} alt="" className='rounded-full'/>}
+                    </div>
+             
                 {user ? <p>{user.username}</p> : <p>Nombre de usuario</p>}
                 {user ? <p>{user.email}</p> : <p>Correo electrónico</p>}
             </article>
             <article className='w-full overflow-auto'>
                 <ul className='p-4 pt-0 grid grid-cols-1 gap-2 w-full'>
-                {link && link.length > 0 ? 
-                link.map((carta, index) => {
-                    return (
-                        <li key={index} className={selectColor(carta.pagina)}>
-                            <LinkDetail
-                            key={index}
-                            className={selectColor(carta.pagina)}
-                            image={findImage(carta.pagina)}
-                            name={carta.pagina}
-                            enlace={carta.enlace}
-                        />
-                        </li>
-                    );
-                })
-                : <li>No hay links</li>
-                }
+                    {link && link.length > 0 ? 
+                        link.map((carta, index) => (
+                            <li key={index} className={selectColor(carta.pagina)}>
+                                <LinkDetail
+                                    key={index}
+                                    className={selectColor(carta.pagina)}
+                                    image={findImage(carta.pagina)}
+                                    name={carta.pagina}
+                                    enlace={carta.enlace}
+                                />
+                            </li>
+                        ))
+                        : <li>No hay links</li>
+                    }
                 </ul>
             </article>
         </section>
-    )
+    );
 }
