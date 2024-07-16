@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://linkeados-server.vercel.app/api/',
+    baseURL: 'https://link-app-backend-neon.vercel.app/api/',
     withCredentials: true
 })
 
