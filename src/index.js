@@ -3,4 +3,7 @@ import { connectDB } from "./db.js";
 
 connectDB();
 
-export default app; // Cambia esto
+app.listen(3000, () => {
+    console.log("Corriendo");
+});
+
