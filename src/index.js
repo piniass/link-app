@@ -1,7 +1,9 @@
-
 import app from "./app.js";
 import { connectDB } from "./db.js";
 
 connectDB();
 
-export default app;
+app.listen(3000, () => {
+    console.log("Corriendo");
+});
+
