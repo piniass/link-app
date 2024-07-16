@@ -7,7 +7,7 @@ import cors from 'cors'
 const app = express()
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://linkeados.vercel.app/',
     credentials: true
 }))
 app.use(morgan('dev'))
