@@ -6,6 +6,7 @@ import Details from '../components/Details'
 import { useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useLinks } from '../context/LinkContext'
+import { Toaster } from 'react-hot-toast'
 
 export default function MainPage() {
   const location = useLocation()
@@ -25,6 +26,10 @@ export default function MainPage() {
 
   return (
     <main className="w-screen h-screen grid grid-cols-3 grid-rows-9 gap-4 bg-slate-100 p-4">
+      <Toaster
+  position="bottom-center"
+  reverseOrder={false}
+/>
       <Header />
       <Details  link={link}/>
       {renderComponents()}

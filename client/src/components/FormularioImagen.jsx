@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext'; 
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 export default function FormularioImagen() {
     const [imagePreview, setImagePreview] = useState('');
@@ -8,14 +9,23 @@ export default function FormularioImagen() {
   const { formImage } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    const file = data.image[0];
-    console.log("envio archivo: ", file);
-    if (file) {
-      await formImage(file);
-    }
-  };
+const onSubmit = async (data) => {
+  console.log(data);
+  const file = data.image[0];
+  console.log("envio archivo: ", file);
+  
+  if (file) {
+    await toast.promise(
+      formImage(file),
+      {
+        loading: 'Subiendo archivo...',
+        success: <b>Archivo subido con éxito!</b>,
+        error: <b>No se pudo subir el archivo.</b>,
+      }
+    );
+  }
+};
+
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -29,7 +39,7 @@ export default function FormularioImagen() {
     <form className='flex items-center justify-between bg-slate-100 w-full p-4 h-80' onSubmit={handleSubmit(onSubmit)}>
           <div className='flex flex-col'>
             <p>Foto de perfil</p>
-            <label className='bg-blue-500 text-white p-2 cursor-pointer my-2'>
+            <label className='bg-blue-500 text-white p-2 cursor-pointer my-2 rounded-md'>
               Selecciona una imagen
               <input 
                 type="file" 

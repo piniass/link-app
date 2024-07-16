@@ -54,9 +54,8 @@ export default function Details(props) {
         <section className='bg-white col-span-1 row-span-8 flex flex-col items-center justify-start gap-2'>
             <article className='flex flex-col items-center justify-center gap-4 mt-4'>
                
-                    <div className='size-52 bg-gray-200 rounded-full'>
-                        {user ? <img src={user.image.url} alt="" className='rounded-full'/> :  <img src={foto} alt="" className='rounded-full'/>}
-                    </div>
+                        {user ? <img src={user.image.url} alt="" className='rounded-full object-cover size-52'/> :  <img src={foto} alt="" className='rounded-full object-cover size-52'/>}
+                    
              
                 {user ? <p>{user.username}</p> : <p>Nombre de usuario</p>}
                 {user ? <p>{user.email}</p> : <p>Correo electrónico</p>}

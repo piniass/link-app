@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useLinks } from '../context/LinkContext';
 import { LINKS_RSS } from '../components/SocialMediaLinks';
 import LinkDetail from '../components/LinkDetail';
+import { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'; 
+
 export default function LinkPage() {
     const location = useLocation();
     const navigate = useNavigate() 
@@ -57,20 +60,31 @@ export default function LinkPage() {
       }
       return className;
   }
+
+  const copyToClipboard = () => {
+    const username = user.username;
+    const linkToCopy = `${window.location.origin}/user/${username}`;
+    navigator.clipboard.writeText(linkToCopy);
+    toast.success('Enlace copiado al portapapeles');
+};
     console.log("Links: ",link)
     console.log("Usuario: ",location.state.user)
   return (
     <div className='h-screen overflow-hidden bg-slate-100'>
+        <Toaster
+  position="bottom-center"
+  reverseOrder={false}
+/>
         <header className='w-full p-6 bg-blue-500 h-[200px] rounded-b-3xl'>
             <div className='p-2 w-full rounded-lg bg-white flex justify-between'>
                 <button className='text-gray-500 p-4' onClick={handleBackEditor}>Volver al editor</button>
-                <button className='text-blue-500 hover:bg-blue-500 hover:text-white p-4 rounded-md'>Compartir</button>
+                <button className='text-blue-500 hover:bg-blue-500 hover:text-white p-4 rounded-md' onClick={copyToClipboard}>Compartir</button>
             </div>
         </header>
         <main className='h-screen flex items-start justify-center relative'>
           <article className='bg-white absolute top-[-50px] rounded-md shadow-md'>
               <div className='p-4 flex flex-col gap-4 justify-center items-center'>
-                <img src={user.image.url} alt="Imagen de avatar" className='size-52 rounded-full'/>
+                <img src={user.image.url} alt="Imagen de avatar" className='size-52 object-cover rounded-full'/>
                 <h3>{user.username}</h3>
                 <h4>{user.email}</h4>
               </div>

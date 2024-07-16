@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useLinks } from '../context/LinkContext';
 import RedditIcon from '../svg/RedditIcon';
 import { LINKS_RSS } from './SocialMediaLinks';
+import toast from 'react-hot-toast';
 
 export default function LinkCard(props) {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
@@ -31,27 +32,50 @@ export default function LinkCard(props) {
 
   const editLink = async (data, enlace) => {
     try {
-      await updateLink(data, enlace);
-      await props.getLinks();
+      await toast.promise(
+        updateLink(data, enlace).then(() => props.getLinks()),
+        {
+          loading: 'Cargando...',
+          success: <b>Enlace editado</b>,
+          error: <b>No se pudo editar correctamente.</b>,
+        }
+      );
     } catch (error) {
       console.error("Error al editar el enlace:", error);
     }
-  }
-
+  };
+  
   const crearLink = async (data) => {
     try {
-      await createLink(data);
-      await props.getLinks();
+      await toast.promise(
+        createLink(data).then(() => props.getLinks()),
+        {
+          loading: 'Cargando...',
+          success: <b>Enlace creado!</b>,
+          error: <b>No se pudo crear el enlace.</b>,
+        }
+      );
     } catch (error) {
       console.error("Error al crear el enlace:", error);
     }
-  }
+  };
+  
 
   const handleDelete = async (id) => {
     props.setCardId(id);
-    await deleteLink(link._id);
-    await props.getLinks();
-  }
+    toast.promise(
+      deleteLink(link._id),
+      {
+        loading: 'Cargando...',
+        success: <b>Enlace eliminado</b>,
+        error: <b>No se pudo eliminar el enlace.</b>,
+      }
+    ).then(() => {
+      props.getLinks();
+    }).catch((error) => {
+      console.error("Error al eliminar el enlace:", error);
+    });
+  };
 
   return (
     <div className='w-full bg-gray-200 rounded-md p-4'>

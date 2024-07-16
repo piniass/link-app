@@ -59,7 +59,7 @@ export default function RegisterPage() {
         <button
           type="button"
           onClick={handleGoRegister}
-          className="border border-blue-500 text-blue-500 p-2 rounded-md hover:bg-blue-500 hover:text-white"
+          className=" text-blue-500 p-2 rounded-md hover:bg-blue-500 hover:text-white"
         >
           Volver al inicio
         </button>
