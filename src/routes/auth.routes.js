@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login, logout,register, profile, getByName, editProfile, setImage, verifyToken } from "../controllers/auth.controller.js";
+import { login, logout,register, profile, getByName, editProfile,getAllUsers, setImage, verifyToken } from "../controllers/auth.controller.js";
 import { createLink, getLinks, getLink, deleteLink, updateLink, getLinkByName } from "../controllers/links.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 const router = Router()
@@ -17,6 +17,8 @@ router.put('/edit', authRequired, editProfile)
 router.put('/image', authRequired, setImage)
 
 router.get('/user/:username', getByName)
+
+router.get('/users/', getAllUsers)
 
 router.get('/link', authRequired, getLinks)
 

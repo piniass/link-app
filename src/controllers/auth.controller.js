@@ -180,6 +180,20 @@ export const getByName = async (req, res) => {
   }
 };
 
+export const getAllUsers = async (req, res) => {
+  try {
+    // Obtener todos los usuarios de la base de datos
+    const users = await User.find();
+
+    // Responder con la lista de usuarios
+    return res.json(users);
+  } catch (error) {
+    console.error(error);
+    // Responder con un error de servidor
+    return res.status(500).json({ message: "Error interno del servidor." });
+  }
+};
+
 
 export const verifyToken = async (req, res) => {
   const { token } = req.cookies;
