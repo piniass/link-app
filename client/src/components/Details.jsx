@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import LinkDetail from './LinkDetail';
 import { LINKS_RSS } from './SocialMediaLinks';
-import foto from '../assets/default.webp'
+import foto from '../assets/default.jpg'
 
 export default function Details(props) {
     const { link } = props;
@@ -54,7 +54,9 @@ export default function Details(props) {
         <section className='bg-white col-span-1 row-span-8 flex flex-col items-center justify-start gap-2'>
             <article className='flex flex-col items-center justify-center gap-4 mt-4'>
                
-                        {user ? <img src={user.image.url} alt="" className='rounded-full object-cover size-52'/> :  <img src={foto} alt="" className='rounded-full object-cover size-52'/>}
+            {user && user.image && user.image.url 
+            ? <img src={user.image.url} alt="" className='rounded-full object-cover size-52'/> 
+            : <img src={foto} alt="" className='rounded-full object-cover size-52'/>}
                     
              
                 {user ? <p>{user.username}</p> : <p>Nombre de usuario</p>}
