@@ -24,6 +24,7 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         const checkLogin = async () => {
           const cookies = Cookies.get();
+          console.log("Cookies: ", cookies)
           if (!cookies.token) {
             setIsAuthenticated(false);
             setLoading(false);
@@ -32,7 +33,7 @@ export const AuthProvider = ({children}) => {
     
           try {
             const res = await verifyTokenRequest(cookies.token);
-            console.log(res.data)
+            console.log("Verify token: ",res.data)
             if (!res.data) return setIsAuthenticated(false);
             setIsAuthenticated(true);
             setUser(res.data);
