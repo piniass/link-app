@@ -22,8 +22,8 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const checkLogin = async () => {
-          const cookies = Cookies.get('token');
-          console.log("Cookies: ", cookies)
+          const token = Cookies.get('token');
+          console.log("Cookies: ", token)
           if (!token) {
             setIsAuthenticated(false);
             setLoading(false);
