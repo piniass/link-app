@@ -24,14 +24,14 @@ export const AuthProvider = ({children}) => {
         const checkLogin = async () => {
           const cookies = Cookies.get('token');
           console.log("Cookies: ", cookies)
-          if (!cookies.token) {
+          if (!token) {
             setIsAuthenticated(false);
             setLoading(false);
             return;
           }
     
           try {
-            const res = await verifyTokenRequest(cookies.token);
+            const res = await verifyTokenRequest(token);
             console.log("Verify token: ",res.data)
             if (!res.data) return setIsAuthenticated(false);
             setIsAuthenticated(true);
