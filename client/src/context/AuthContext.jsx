@@ -2,7 +2,6 @@ import { createContext, useState,useContext } from "react";
 import { registerRequest, loginRequest, verifyTokenRequest, editRequest, putImage, getInfo } from "../api/auth";
 import Cookies from 'js-cookie'
 import { useEffect } from "react";
-import { get } from "mongoose";
 
 export const AuthContext = createContext()
 
@@ -23,7 +22,7 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const checkLogin = async () => {
-          const cookies = Cookies.get();
+          const cookies = Cookies.get('token');
           console.log("Cookies: ", cookies)
           if (!cookies.token) {
             setIsAuthenticated(false);
