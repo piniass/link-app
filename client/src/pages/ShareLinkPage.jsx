@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
+import axios from "./axios";
 import { useState } from 'react';
 import { LINKS_RSS } from '../components/SocialMediaLinks';
 import LinkDetail from '../components/LinkDetail';
@@ -53,7 +53,7 @@ export default function ShareLinkPage() {
 
     const getUser = async (username) => {
         try {
-            const res = await axios.get(`http://localhost:3000/api/user/${username}`);
+            const res = await axios.get(`/user/${username}`);
             // console.log(res.data);
             setUser(res.data)
         } catch (error) {
@@ -63,7 +63,7 @@ export default function ShareLinkPage() {
 
     const getLinksByUser = async (username) => {
         try {
-            const res = await axios.get(`http://localhost:3000/api/link/user/${username}`);
+            const res = await axios.get(`/link/user/${username}`);
             // console.log(res.data);
             setLinks(res.data)
         } catch (error) {
