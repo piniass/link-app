@@ -1,9 +1,5 @@
 import axios from "./axios";
 
-import Cookies from 'js-cookie';
-
-// Obtener el token de las cookies
-const token = Cookies.get('token');
 
 export const registerRequest = user => axios.post('/register', user, { withCredentials: true });
 
@@ -11,20 +7,10 @@ export const loginRequest = user => axios.post('/login', user, { withCredentials
 
 export const editRequest = user => axios.put('/edit', user, { withCredentials: true });
 
-export const verifyTokenRequest = async () => {
-  try {
-    const response = await axios.get('/auth/verify', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-      withCredentials: true
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error verifying token:', error);
-    throw error;
-  }
-};
+export const verifyTokenRequest = () => axios.get('/auth/verify', {
+  withCredentials: true
+});
+
 export const getInfo = () => axios.get('/profile', { withCredentials: true });
 
 export const putImage = async (image) => {
