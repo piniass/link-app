@@ -25,11 +25,11 @@ export const AuthProvider = ({children}) => {
           const token = Cookies.get('token');
           console.log("Token from cookie: ", token); // Verifica que esto imprima el token correctamente
       
-          if (!token) {
-            setIsAuthenticated(false);
-            setLoading(false);
-            return;
-          }
+        //   if (!token) {
+        //     setIsAuthenticated(false);
+        //     setLoading(false);
+        //     return;
+        //   }
       
           try {
             const res = await verifyTokenRequest(token);
