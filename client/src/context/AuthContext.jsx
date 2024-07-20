@@ -22,14 +22,14 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const checkLogin = async () => {
-          const token = Cookies.get('token');
+          const token = Cookies.get();
           console.log("Token from cookie: ", token); // Verifica que esto imprima el token correctamente
       
-        //   if (!token) {
-        //     setIsAuthenticated(false);
-        //     setLoading(false);
-        //     return;
-        //   }
+          if (!token) {
+            setIsAuthenticated(false);
+            setLoading(false);
+            return;
+          }
       
           try {
             const res = await verifyTokenRequest(token);
