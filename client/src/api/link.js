@@ -1,5 +1,9 @@
 import axios from "./axios";
 
+axios.defaults.withCredentials = true;
+
+
+
 export const getLinksRequest = () => axios.get('/link', { withCredentials: true })
 export const getLinkRequest = () => axios.get(`/link/${link._id}`, { withCredentials: true })
 export const createLinkRequest = (link) => axios.post('/link', link, { withCredentials: true })
