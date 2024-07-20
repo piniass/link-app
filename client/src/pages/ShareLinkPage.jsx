@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from "./axios";
 import { useState } from 'react';
 import { LINKS_RSS } from '../components/SocialMediaLinks';
 import LinkDetail from '../components/LinkDetail';
+import axios from '../api/axios'
+
 export default function ShareLinkPage() {
     const location = useLocation();
     const usernamePath = location.pathname.slice(6);
