@@ -1,9 +1,10 @@
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
-import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
+import { Toaster } from 'react-hot-toast'
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -25,12 +26,22 @@ export default function LoginPage() {
   };
 
   const onSubmit = async (usuario) => {
-    // ev.preventDefault()
-    await signin(usuario)
-  }
+    await toast.promise(
+      signin(usuario),
+      {
+        loading: 'Cargando...',
+        success: <b>Sesión iniciada con éxito</b>,
+        error: <b>Se produjo un error en el servidor, vuelve a intentarlo</b>,
+      }
+    );
+  };
 
   return (
     <main className="w-screen h-screen flex items-center justify-center bg-slate-100">
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false}
+      />
       <form className="bg-white border rounded-md flex flex-col p-4 sm:p-9 w-[300px] sm:w-[500px]"
         onSubmit={handleSubmit(onSubmit)}>
         <h1 className="text-xl font-bold">Linkeados</h1>
