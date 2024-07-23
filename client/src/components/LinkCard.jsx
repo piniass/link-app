@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useLinks } from '../context/LinkContext';
-import RedditIcon from '../svg/RedditIcon';
 import { LINKS_RSS } from './SocialMediaLinks';
 import toast from 'react-hot-toast';
 
@@ -44,7 +43,7 @@ export default function LinkCard(props) {
       console.error("Error al editar el enlace:", error);
     }
   };
-  
+
   const crearLink = async (data) => {
     try {
       await toast.promise(
@@ -59,7 +58,6 @@ export default function LinkCard(props) {
       console.error("Error al crear el enlace:", error);
     }
   };
-  
 
   const handleDelete = async (id) => {
     props.setCardId(id);
@@ -99,16 +97,19 @@ export default function LinkCard(props) {
               ))}
               <option value="Otra página">Otra página</option>
             </select>
-            {errors.pagina && <span>Este campo es requerido</span>}
+            {errors.pagina && <span className='text-sm'>Este campo es requerido</span>}
           </>
         ) : (
-          <input
-            type="text"
-            name="pagina"
-            id="pagina"
-            className='p-2'
-            {...register("pagina", { required: true })}
-          />
+          <>
+            <input
+              type="text"
+              name="pagina"
+              id="pagina"
+              className='p-2'
+              {...register("pagina", { required: true })}
+            />
+            <span className='text-left text-sm'>Escribe el nombre del página</span>
+          </>
         )}
 
         <label htmlFor="enlace" className='text-left text-xs mt-2'>Enlace</label>
@@ -119,7 +120,7 @@ export default function LinkCard(props) {
           className='p-2'
           {...register("enlace", { required: true })}
         />
-        {errors.enlace && <span>Este campo es requerido</span>}
+        {errors.enlace && <span className='text-left text-sm'>Este campo es requerido</span>}
 
         <button
           type='submit'

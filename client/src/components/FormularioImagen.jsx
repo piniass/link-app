@@ -36,7 +36,7 @@ const onSubmit = async (data) => {
     }
   };
   return (
-    <form className='flex items-center justify-between bg-slate-100 w-full p-4 h-80' onSubmit={handleSubmit(onSubmit)}>
+    <form className='flex flex-col md:flex-row  items-center justify-between bg-slate-100 w-full p-4 h-80' onSubmit={handleSubmit(onSubmit)}>
           <div className='flex flex-col'>
             <p>Foto de perfil</p>
             <label className='bg-blue-500 text-white p-2 cursor-pointer my-2 rounded-md'>
@@ -52,8 +52,8 @@ const onSubmit = async (data) => {
           </div>
           <div>
             {imagePreview ? (
-              <div className='flex flex-col items-center justify-center'>
-                <img src={imagePreview} alt="Profile Preview" className='size-52 rounded-md object-cover' />
+              <div className='flex flex-col items-center justify-center overflow-auto'>
+                <img src={imagePreview} alt="Profile Preview" className='hidden md:inline size-52 rounded-md object-cover' />
                 {fileName && <p className='mt-2 text-gray-600'>Nombre del archivo: {fileName}</p>}
               </div>
             ) : (

@@ -51,7 +51,7 @@ export default function Details(props) {
     }
 
     return (
-        <section className='bg-white col-span-1 row-span-8 flex flex-col items-center justify-start gap-2'>
+        <section className='bg-white col-span-1 row-span-8 hidden md:flex flex-col items-center justify-start gap-2'>
             <article className='flex flex-col items-center justify-center gap-4 mt-4'>
                
             {user && user.image && user.image.url 

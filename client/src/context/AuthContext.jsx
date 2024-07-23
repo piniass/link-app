@@ -22,6 +22,7 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const checkLogin = async () => {
+            setError([])
           const token = Cookies.get();
           console.log("Token from cookie: ", token); // Verifica que esto imprima el token correctamente
       
@@ -50,6 +51,7 @@ export const AuthProvider = ({children}) => {
         checkLogin();
       }, []);
     const signup = async(user) => {
+        setError([])
         try {
             const res = await registerRequest(user)
             setUser(res.data)
@@ -65,10 +67,12 @@ export const AuthProvider = ({children}) => {
             const res = await loginRequest(user)
             await setProfile()
             // setUser(user)
+            setError([])
             setIsAuthenticated(true)
+            
         } catch (error) {
             console.log(error)
-            // setError(error.response.data)
+            setError(error.response.data.message)
             // console.log(error.response.data)
         }
     }
@@ -110,6 +114,10 @@ export const AuthProvider = ({children}) => {
         setIsAuthenticated(false);
       };
 
+      const clearErrors = () => {
+        setError([]);
+      };
+
     return (
         <AuthContext.Provider 
             value={{ 
@@ -123,6 +131,7 @@ export const AuthProvider = ({children}) => {
                 error,
                 loading,
                 logout,
+                clearErrors
             }}>
             {children}
         </AuthContext.Provider>

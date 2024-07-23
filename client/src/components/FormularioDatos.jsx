@@ -33,13 +33,13 @@ export default function FormularioDatos() {
     return (
         <form className='w-full flex flex-col justify-between gap-5 h-full' onSubmit={handleSubmit(onSubmit)}>
             <section className='bg-slate-100 w-full p-4 flex flex-col justify-around items-start gap-4 h-full'>
-                <article className='w-full flex gap-4'>
-                    <label htmlFor="username" className='w-1/3 p-2 text-left'>Nombre de usuario</label>
-                    <input type="text" name="username" id="username" className='w-2/3 p-2' {...register('username')} />
+                <article className='w-full flex md:flex-row flex-col gap-4'>
+                    <label htmlFor="username" className='w-full md:w-1/3 p-2 text-left'>Nombre de usuario</label>
+                    <input type="text" name="username" id="username" className='w-full md:w-2/3 p-2' {...register('username')} />
                 </article>
-                <article className='w-full flex gap-4'>
-                    <label htmlFor="email" className='w-1/3 p-2 text-left'>Correo electrónico</label>
-                    <input type="email" name="email" id="email" className='w-2/3 p-2' {...register('email')} />
+                <article className='w-full flex md:flex-row flex-col gap-4'>
+                    <label htmlFor="email" className='w-full md:w-1/3 text-left'>Correo electrónico</label>
+                    <input type="email" name="email" id="email" className='w-full md:w-2/3 p-2' {...register('email')} />
                 </article>
             </section>
 

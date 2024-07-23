@@ -84,11 +84,11 @@ export default function LinkPage() {
         <main className='h-screen flex items-start justify-center relative'>
           <article className='bg-white absolute top-[-50px] rounded-md shadow-md'>
               <div className='p-4 flex flex-col gap-4 justify-center items-center'>
-                <img src={user.image.url} alt="Imagen de avatar" className='size-52 object-cover rounded-full'/>
+                <img src={user.image.url} alt="Imagen de avatar" className='size-32 md:size-52 object-cover rounded-full'/>
                 <h3>{user.username}</h3>
                 <h4>{user.email}</h4>
               </div>
-              <ul className='flex flex-col gap-4 w-[350px] h-[250px] overflow-auto p-2'>
+              <ul className='flex flex-col gap-4 w-full md:w-[350px] h-[250px] overflow-auto p-2'>
               {link && link.length > 0 ? 
                         link.map((carta, index) => (
                             <li key={index} className={selectColor(carta.pagina)}>
