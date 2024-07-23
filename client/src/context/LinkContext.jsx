@@ -18,11 +18,11 @@ export const LinkProvider = ({children}) => {
     const [link, setLink] = useState([])
 
     const createLink = async(link) => {
-        console.log("link", link)
+        // console.log("link", link)
         try {
             const res = await createLinkRequest(link)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

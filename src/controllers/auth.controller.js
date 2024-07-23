@@ -81,12 +81,13 @@ export const login = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 export const logout = async (req, res) => {
-  res.cookie('token', "", {
-    expires: new Date(0)
-  })
-  return res.sendStatus(200)
+  res.cookie("token", "", {
+    httpOnly: true,
+    secure: true,
+    expires: new Date(0),
+  });
+  return res.sendStatus(200);
 };
 
 export const profile = async (req, res) => {

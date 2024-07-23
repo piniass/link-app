@@ -16,7 +16,7 @@ export default function MainPage() {
 
   useEffect(() => {
     getLinks()
-    console.log("links: ", link)
+    // console.log("links: ", link)
   }, [])
 
   const toggleAsideMenu = () => {

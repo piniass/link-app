@@ -24,7 +24,7 @@ export const AuthProvider = ({children}) => {
         const checkLogin = async () => {
             setError([])
           const token = Cookies.get();
-          console.log("Token from cookie: ", token); // Verifica que esto imprima el token correctamente
+        //   console.log("Token from cookie: ", token); // Verifica que esto imprima el token correctamente
       
           if (!token) {
             setIsAuthenticated(false);
@@ -34,7 +34,7 @@ export const AuthProvider = ({children}) => {
       
           try {
             const res = await verifyTokenRequest(token);
-            console.log("Verify token response: ", res.data);
+            // console.log("Verify token response: ", res.data);
             if (!res.data) {
               setIsAuthenticated(false);
             } else {
@@ -42,7 +42,7 @@ export const AuthProvider = ({children}) => {
               setUser(res.data);
             }
           } catch (error) {
-            console.log(error);
+            // console.log(error);
             setIsAuthenticated(false);
           } finally {
             setLoading(false);
@@ -71,7 +71,7 @@ export const AuthProvider = ({children}) => {
             setIsAuthenticated(true)
             
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             setError(error.response.data.message)
             // console.log(error.response.data)
         }
@@ -79,37 +79,41 @@ export const AuthProvider = ({children}) => {
 
     const editProfile = async(user) => {
         try {
-            console.log(user)
+            // console.log(user)
             const res = await editRequest(user)
             await setProfile()
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
     const setProfile = async() => {
         try {
             const res = await getInfo()
-            console.log(res)
+            // console.log(res)
             setUser(res.data)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
     const formImage = async(image) => {
         try {
-            console.log("parametro: ",image)
+            // console.log("parametro: ",image)
             const res = await putImage(image)
             await setProfile()
-            console.log("respuesta: ",res)
+            // console.log("respuesta: ",res)
         } catch(error) {
-            console.log("error: ",error)
+            // console.log("error: ",error)
         }
     }
 
     const logout = () => {
-        Cookies.remove();
+        const token = Cookies.get();
+        // console.log("Token from cookie: ", token)
+        Cookies.remove("token");
+        // console.log("Remove Token from cookie: ", token)
+
         setUser(null);
         setIsAuthenticated(false);
       };

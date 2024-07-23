@@ -81,8 +81,8 @@ export default function ShareLinkPage() {
         fetchData();
     }, [usernamePath]); // Añadir usernamePath como dependencia para asegurarse de que el efecto se ejecute cuando cambie
 
-    console.log(usernamePath);
-    console.log(user)
+    // console.log(usernamePath);
+    // console.log(user)
     return (
         <div className='h-screen overflow-hidden bg-slate-100'>
             <header className='w-full p-6 bg-blue-500 h-[200px] rounded-b-3xl'></header>

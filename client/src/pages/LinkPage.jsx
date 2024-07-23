@@ -21,7 +21,7 @@ export default function LinkPage() {
     }
 
     const findImage = (name) => {
-      console.log(name)
+    //   console.log(name)
       const social = LINKS_RSS.find(rss => rss.nombre === name);
       return social ? social.imagen : null;
   }
@@ -67,8 +67,8 @@ export default function LinkPage() {
     navigator.clipboard.writeText(linkToCopy);
     toast.success('Enlace copiado al portapapeles');
 };
-    console.log("Links: ",link)
-    console.log("Usuario: ",location.state.user)
+    // console.log("Links: ",link)
+    // console.log("Usuario: ",location.state.user)
   return (
     <div className='h-screen overflow-hidden bg-slate-100'>
         <Toaster

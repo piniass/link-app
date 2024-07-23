@@ -8,7 +8,7 @@ export default function Details(props) {
     const { link } = props;
     const { user } = useAuth();
 
-    console.log("usuario",user)
+    // console.log("usuario",user)
 
     const selectColor = (link) => {
         let className = 'p-2 w-full rounded-md flex items-center justify-between ';

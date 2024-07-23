@@ -16,7 +16,7 @@ export default function FormularioDatos() {
 
     const onSubmit = async (data) => {
         try {
-            console.log(data);
+            // console.log(data);
             await toast.promise(
                 editProfile(data),
                 {
@@ -26,7 +26,7 @@ export default function FormularioDatos() {
                 }
             );
         } catch (error) {
-            console.error("Error al editar:", error);
+            // console.error("Error al editar:", error);
         }
     };
 

@@ -10,9 +10,9 @@ export default function FormularioImagen() {
   const { register, handleSubmit, setValue } = useForm();
 
 const onSubmit = async (data) => {
-  console.log(data);
+  // console.log(data);
   const file = data.image[0];
-  console.log("envio archivo: ", file);
+  // console.log("envio archivo: ", file);
   
   if (file) {
     await toast.promise(

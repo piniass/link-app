@@ -73,7 +73,7 @@ export default function LoginPage() {
           Iniciar sesion
         </button>
         
-        {error && console.log("error:", error)}
+        {/* {error && console.log("error:", error)} */}
         <div className="flex justify-between items-center">
           <p>¿No tienes una cuenta aún?</p>
           <button
